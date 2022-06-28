@@ -1,0 +1,53 @@
+.main{
+    display: flex;
+    flex: 1;
+    height: 100vh;
+    background-color: blueviolet;
+    justify-content:end;
+  }
+  
+  
+  .drawer1{
+    width: clamp(200px,40%,600px);
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 1s;
+    transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .drawer2{
+    width: clamp(200px,40%,600px);
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 1s;
+    transform: translateX(0);
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+
+
+
+
+ 
+.container{
+  margin: calc(3% + 2px);
+}
+
+  a{
+    font-size: calc(20% + 30px);
+    text-transform: uppercase;
+    margin: calc(3% + 2px);
+    color: blueviolet;
+    font-weight: 600;
+  }
