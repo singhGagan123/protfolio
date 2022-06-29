@@ -7,11 +7,11 @@ const createReducer=createSlice({
         name:'Home'
     },
     reducers:{
-        setName:(state,action)=>{state.name=action.payload}
+        setScreenName:(state,action)=>{state.name=action.payload}
     }
 })
 
 
-export const {setName}= createReducer.actions;
+export const {setScreenName}= createReducer.actions;
 
 export default createReducer.reducer;

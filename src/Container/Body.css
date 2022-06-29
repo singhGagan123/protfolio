@@ -2,9 +2,12 @@
 .body{
     width: 100%;
     display: flex;
-    height: 100vh;
+    
+    
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
+   
 }
 
 .heading{
@@ -17,42 +20,80 @@
 }
 .box{
     width: 100%;
-    height: calc( 100% - calc(3% + 2px));
+    height: 100%;
+   
+    
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
 }
-
-.image{
-    width: 100%;
-    height: 100%;
-    background: url(Image/img.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius:6px;
+.card{
+    width: 20%;
+    height: fit-content;
     position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+    
+.card2{
+    border-radius: 2%;
+    
+    
+    background-color: rgb(0,0, 0,0.5);
+    backdrop-filter: blur(20px);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  
+    
 }
 
-.image::before{
-    content: 'Hi i am kulwinder';
-    position: absolute;
+.card2 p{
+    font-size: 10px;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    font-size: calc(40% + 20px);
-    background-color: rgb(0, 0, 0,0.5);
-    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-    transform: translateX(-100%);
+    padding-left: 20px;
 }
-.image:hover::before{
-    transform: translateX(0);
+.card2 a {
+    
+    font-size: calc(15% + 14px);
 }
+.card text{
+
+    content: 'delete';
+    position: absolute;
+    
+    bottom: -25px;
+    padding: 6% 10% 5% 10%;
+    z-index: 1;
+    background-color: red;
+    box-shadow: 0 -10px 0px white;
+    color: white;
+    font-size: calc(10% + 10px);
+    text-transform: uppercase;
+    border-radius: 8%;
+    box-shadow: 0px 15px 100px rgba(0, 0, 0, 1);
+    transition: z-index 1s;
+
+}
+.card text:hover{
+
+    animation: spring 1s linear;
+    z-index: 2;
+
+}
+
+@keyframes spring {
+
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(20px);}
+    100% {transform: translateY(0px)}
+    
+}
+
+
 
 h1{
     letter-spacing: 2px;
