@@ -7,10 +7,10 @@ import { setScreenName } from './Store/current_state_slice';
 
 export const Drawer = () => {
     const [name, setName] = useState('drawer1')
-    // useEffect(()=>{
+    useEffect(()=>{
 
-    //   setName('drawer1')
-    // },[])
+      setName('drawer1')
+    },[])
 
     const dispatch=useDispatch()
     return (

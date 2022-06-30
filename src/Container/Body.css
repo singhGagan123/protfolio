@@ -54,7 +54,7 @@
 .card2 p{
     font-size: 10px;
     color: white;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 .card2 a {
     
@@ -76,6 +76,7 @@
     border-radius: 8%;
     box-shadow: 0px 15px 100px rgba(0, 0, 0, 1);
     transition: z-index 1s;
+    cursor: pointer;
 
 }
 .card text:hover{

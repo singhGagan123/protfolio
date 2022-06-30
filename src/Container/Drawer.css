@@ -11,7 +11,7 @@
   .drawer1{
     width: clamp(200px,40%,600px);
     height: 100vh;
-    background-color: blueviolet;
+    background: linear-gradient(to bottom right,red, blue);
     position: absolute;
     top: 0;
     left: 0;
@@ -27,7 +27,7 @@
   .drawer2{
     width: clamp(200px,40%,600px);
     height: 100vh;
-    background-color: blueviolet;
+    background: linear-gradient(to bottom right,red, blue);
     position: absolute;
     top: 0;
     left: 0;

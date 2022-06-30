@@ -1,31 +1,47 @@
-import { useSelector } from 'react-redux'
+
 import './Body.css'
 import { Info } from './Info'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Skills } from './Skills'
 import { AddSkills } from './AddSkills'
-
+import { EditSkills } from './editSkills'
+import { useSelector,useDispatch } from 'react-redux'
+import { setAddDetails, setAllDetails, setRemoveDetails } from './Store/details_slice'
+import { setAllSkills } from './Store/skill_slice'
 
 
 export const Body = (props) => {
 
-    const [details, setDetails] = useState([]);
+    const dispatch=useDispatch()
+    const {details}=useSelector(state=>state.details)
+    const { name } = useSelector(state => state.name) //global state
+    // const [details, setDetails] = useState([]);
+  
 
     useEffect(() => {
+       
+        axios.get('http://mi-linux.wlv.ac.uk/~2019323/kulwinder/index.php/fetch/data')
+            .then(resp => resp.data).then(result => dispatch(setAllDetails(result.data)))
+            .catch(err => alert(err))
 
-        axios.get('http://localhost/kulwinder/index.php/fetch/data')
-            .then(resp => resp.data).then(result => setDetails(result.data))
+            axios.get('http://mi-linux.wlv.ac.uk/~2019323/kulwinder/index.php/fetch/skills')
+            .then(resp => resp.data).then(result => dispatch(setAllSkills(result.data)))
             .catch(err => alert(err))
 
     }, [])
 
-    const { name } = useSelector(state => state.name) //global state
+   
 
     const deleteSelected = (id) => {
-        axios.get(`http://localhost/kulwinder/index.php/delete/data/${id}`)
-            .then(resp => alert('deleted'))
-            .catch(err => alert(err))
+        console.log(id)
+        axios.get(`http://mi-linux.wlv.ac.uk/~2019323/kulwinder/index.php/delete/data/${id}`)
+            .then(resp => {
+
+                dispatch(setRemoveDetails(id))
+                alert('deleted')
+            })
+            .catch(err => console.log(err.response.data))
     }
 
     return (
@@ -42,8 +58,9 @@ export const Body = (props) => {
                             <div key={index} className='card'>
                                 <div className='card2'>
                                     <a>{detail.name}</a>
-                                    <p>{detail.description}</p>
                                     <a>{detail.contact_detail}</a>
+                                    <p>{detail.description}</p>
+                                    
                                 </div>
                                 <text onClick={() => deleteSelected(detail.id)}>Delete</text>
                             </div>
@@ -52,7 +69,8 @@ export const Body = (props) => {
                     :
 
                     name === 'Info' ? <Info /> :
-                        name==='AddSkills'? <AddSkills/>:<Skills />}
+                        name==='AddSkills'? <AddSkills/>:
+                        name==='EditSkills'? <EditSkills/>:<Skills />}
 
             </div>
         </div>

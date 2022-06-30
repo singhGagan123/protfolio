@@ -1,29 +1,43 @@
 import './Info.css'
 import Axios from 'axios';
 import { useState } from 'react';
-
+import { useDispatch,useSelector } from 'react-redux/es/exports';
+import { setAddDetails } from './Store/details_slice';
 
 export const Info=()=>{
 
+    const dispatch=useDispatch();
     const [name,setName]=useState('sa')
     const [desc,setDesc]=useState('as')
     const [contact,setContact]=useState('as');
-
+    
+    const {details}=useSelector(state=>state.details)
     const saveInfo=()=>{
  
 
+     
         const data= new FormData();
 
         data.append('name',name)
         data.append('description',desc)
         data.append('contact_detail',contact)
        
+        const uploadData={
+            name:name,
+            description:desc,
+            contact_detail:contact
+        }
 
-        Axios.post('http://localhost/kulwinder/index.php/store/data',data)
-        .then((resp)=>alert('sucessfully added'))
+        Axios.post('http://mi-linux.wlv.ac.uk/~2019323/kulwinder/index.php/store/data',data)
+        .then((resp)=>{
+            alert('sucessfully added')
+            dispatch(setAddDetails(uploadData))
+
+        })
         .catch(err=>alert(err.message))
 
         
+       
       
     }
 
